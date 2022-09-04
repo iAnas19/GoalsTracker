@@ -6,7 +6,7 @@ import { FaUser } from "react-icons/fa";
 import { register, reset } from "../features/auth/authSlice";
 import Spinner from "../components/Spinner";
 
-function Register() {
+const Register = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -46,7 +46,7 @@ function Register() {
     e.preventDefault();
 
     if (password !== password2) {
-      toast.error("Passwords do not match");
+      toast.error("Passwords do not match", { autoClose: 1200 });
     } else {
       const userData = {
         name,
@@ -68,7 +68,7 @@ function Register() {
         <h1>
           <FaUser /> Register
         </h1>
-        <p>Please create an account</p>
+        <p>Register and Start Setting your Goals</p>
       </section>
 
       <section className="form">
@@ -121,11 +121,20 @@ function Register() {
             <button type="submit" className="btn btn-block">
               Submit
             </button>
+            <p>
+              already have an account?{" "}
+              <span
+                onClick={() => navigate("/Login")}
+                style={{ color: "#00986d", cursor: "pointer" }}
+              >
+                Sign in
+              </span>
+            </p>
           </div>
         </form>
       </section>
     </>
   );
-}
+};
 
 export default Register;

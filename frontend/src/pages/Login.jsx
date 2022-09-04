@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { login, reset } from "../features/auth/authSlice";
 import Spinner from "../components/Spinner";
 
-function Login() {
+const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -23,7 +23,7 @@ function Login() {
 
   useEffect(() => {
     if (isError) {
-      toast.error(message);
+      toast.error(message, { autoClose: 1200 });
     }
 
     if (isSuccess || user) {
@@ -95,9 +95,15 @@ function Login() {
             </button>
           </div>
         </form>
+        <p
+          style={{ color: "#00986d", cursor: "pointer" }}
+          onClick={() => navigate("/underDevelopment")}
+        >
+          Forgot Password?{" "}
+        </p>
       </section>
     </>
   );
-}
+};
 
 export default Login;
