@@ -64,7 +64,11 @@ const loginUser = asyncHandler(async (req, res) => {
     });
   } else {
     res.status(400);
-    throw new Error("Invalid credentials");
+    if (!user) {
+      throw new Error("User not found!");
+    } else {
+      throw new Error("Invalid credentials!");
+    }
   }
 });
 
